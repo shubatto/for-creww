@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # get 'inquiries/new'
+  get '/inquiries', to: 'inquiries#new'
+	post '/inquiries', to: 'inquiries#create'
 end

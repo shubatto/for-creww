@@ -1,0 +1,24 @@
+<% provide(:title, '確認画面') %>
+<h1>お問い合わせ</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		内容をご確認ください。
+		<%= form_for @inquiry do |f| %>
+			<%= f.label	:name, 'お名前' %>
+			<%= f.text_field :name, { readonly: true, class: 'form-control' } %>
+
+			<%= f.label :email, 'メールアドレス' %>
+			<%= f.email_field :email, { readonly: true, class: 'form-control'}  %>
+
+			<%= f.label	:inquiry_type_id, 'お問い合わせの種類' %>
+			<%= f.select :inquiry_type_id, InquiryType.all.map{ |t| [t.name, t.id] }, { selected: @inquiry.inquiry_type_id }, { disabled: true, class: 'form-control' } %>
+			<%= f.hidden_field :inquiry_type_id, value: @inquiry.inquiry_type_id %>
+
+			<%= f.label :content, '内容' %>
+			<%= f.text_area :content, { readonly: true, class: 'form-control' } %>
+
+			<%= f.submit '戻る', class: 'btn btn-primary' %>
+			<%= f.submit '送信', class: 'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>

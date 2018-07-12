@@ -1,10 +1,10 @@
 class InquiriesController < ApplicationController
 	before_action :load_inquiry, only: [:confirm, :create]
 	BACK_BUTTON = '戻る'
-
-  def new
+	
+	def new
 		@inquiry = Inquiry.new
-  end
+	end
 	
 	def confirm
 		@inquiry = Inquiry.new(inquiry_params)
